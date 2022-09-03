@@ -6,17 +6,16 @@ function Login(props) {
     const [credentials, setCredentials] = useState({})
     const [message, setMessage] = useState('')
     const router = useRouter()
-
-    // Stores user input in credentials state
     const handleLoginChange = (e) => {
+        // Stores user input in credentials state
         setCredentials({
             ...credentials,
             [e.target.name]: e.target.value
         })
-    }
+    };
 
-    // Submit credentials state to server for authentication
     const handleLoginButton = () => {
+        // Submit credentials state to server for authentication
         fetch('http://127.0.0.1:8080/api/login', {
             method: 'POST',
             origin: '*',
@@ -42,9 +41,10 @@ function Login(props) {
                     setMessage(result.message)
                 }
             })
-    }
+    };
 
     return (
+        // Render Display
         <div className='login column'>
             <div className="login-title">
                 <Image className="logo" src="/QuizWizNav3.png" alt="Logo" height={110} width={250} />
@@ -56,7 +56,6 @@ function Login(props) {
                 <a className="btn log-btn" onClick={handleLoginButton}>Login</a>
                 <a href="/register" className="btn log-btn">Register Here</a>
             </div>
-
             <div className="icon-container" style={{ textAlign: "center" }}>
                 <a id="google-btn" className="passport-btn" href="https://damp-spire-28696.herokuapp.com/auth/google">
                     <Image src='/icons/google.png' alt="Login With Google" height={50} width={50} />
@@ -73,8 +72,6 @@ function Login(props) {
             </div>
         </div>
     )
-}
-
-
+};
 
 export default Login

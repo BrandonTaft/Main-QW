@@ -4,12 +4,7 @@ import { useCallback } from "react";
 
 function Background() {
     const particlesInit = useCallback(async (engine) => {
-        console.log(engine);
         await loadFull(engine);
-    }, []);
-
-    const particlesLoaded = useCallback(async (container) => {
-        await console.log(container);
     }, []);
 
     return (
@@ -17,76 +12,79 @@ function Background() {
             className="particle-bg"
             id="tsparticles"
             init={particlesInit}
-            loaded={particlesLoaded}
             options={{
                 background: {
                     color: {
-                        value: "#121212",
+                        value: "transparent",
                     },
                 },
                 fpsLimit: 120,
-                
                 particles: {
-                    "number": {
-                        "value": 75,
-                        "density": {
-                            "enable": false,
-                            "value_area": 800
+                    number: {
+                        value: 80,
+                    },
+                    color: {
+                        "value": ["#EAECEC", "#FFDD43", "#bb86fc"]
+                    },
+                    shape: {
+                        type:  "star",
+                    },
+                    opacity: {
+                        value: .9,
+                        anim: {
+                            enable: true,
+                            speed: .5,
+                            opacity_min: 0.1,
+                            sync: false
                         }
                     },
-                    "color": {
-                        "value": ["#EAECEC", "#FFDD43", "#28175a"]
+                    size: {
+                        value: 3,
+                        random: true,
                     },
-                    "shape": {
-                        "type":  "star",
-                        "image": {
-                            "src": "./assets/img/star.png",
-                            "height": 100,
-                            "width": 9
+                    move: {
+                        enable: true,
+                        speed: {
+                            min: .1,
+                            max: .6
+                          },
+                        direction: "bottom",
+                        random: true,
+                        straight: true,
+                        out_mode: "out",
+                    },
+                    rotate: {
+                        value: {
+                          min: 0,
+                          max: 360
                         },
-                        "stroke": {
-                            "width": 0,
-                            "color": "#ceb728"
+                        direction: "random",
+                        move: true,
+                        animation: {
+                          enable: true,
+                          speed: {
+                          min: 8,
+                          max: 12
+                        }
+                        }
+                      },
+                      roll: {
+                        darken: {
+                          enable: true,
+                          value: 30
                         },
-                    },
-                    "opacity": {
-                        "value": .9,
-                        "anim": {
-                            "enable": true,
-                            "speed": .8,
-                            "opacity_min": 0.1,
-                            "sync": false
+                        enlighten: {
+                          enable: true,
+                          value: 30
+                        },
+                        enable: true,
+                        speed: {
+                          min: 3,
+                          max: 17
                         }
-                    },
-                    "size": {
-                        "value": 3,
-                        "random": true,
-                        "anim": {
-                            "enable": true,
-                            "speed": 10,
-                            "size_min": .3,
-                            "sync": false
-                        }
-                    },
-                    "line_linked": {
-                        "enable": false
-                    },
-                    "move": {
-                        "enable": true,
-                        "speed": .5,
-                        "direction": "bottom",
-                        "random": true,
-                        "straight": true,
-                        "out_mode": "out",
-                        "bounce": false,
-                        "attract": {
-                            "enable": false,
-                            "rotateX": 600,
-                            "rotateY": 600
-                        }
-                    }
+                      },
                 },
-                "retina_detect": true
+                retina_detect: true
             }}
         />
     );

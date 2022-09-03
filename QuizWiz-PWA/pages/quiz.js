@@ -184,11 +184,11 @@ function StartQuiz() {
             </div>
           ) : (
             <div>
-              <Link to={{ pathname: `/homepage` }}>
+              {/* <Link to={{ pathname: `/homepage` }}>
                 <Button id="sub-btn">
                   <div>Return Home</div>
                 </Button>
-              </Link>
+              </Link> */}
               <Popup modal trigger={<Button id="sub-btn">Submit Quiz</Button>}>
                 {" "}
                 <div id="final-blurb">

@@ -435,15 +435,16 @@ app.get("/logout", function (req, res) {
 
 app.get("/api/highscore", (req, res) => {
     let leaderboard = [];
-    models.Users.findAll({
+    let users = models.Users.findAll({
         raw: true,
-        limit: 10,
+        limit: 100,
         group: ["high_score", "Users.id"],
         order: [[sequelize.fn("max", sequelize.col("high_score")), "DESC"]]
-
         //  [['score', 'Desc']]
     }).then(high_Score => {
-        for (let i = 0; i < 10; i++) {
+        let len = high_Score.length
+        console.log(high_Score.length)
+        for (let i = 0; i < len; i++) {
             leaderboard.push({
                 username: high_Score[i]["name"],
                 score: high_Score[i]["high_score"]

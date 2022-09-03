@@ -20,12 +20,10 @@ function ScoreCard() {
 
     return (
         <div className="scorecard">
-            <span>
-                You did it {wizardName}
-            </span>
             <p>Your Score</p>
             <div className="dial">      
-                    {myScore}
+                    {/* {myScore} */}
+                    33333
             </div>
         </div>
     )

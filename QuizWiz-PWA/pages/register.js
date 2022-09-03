@@ -6,15 +6,16 @@ function Register(props) {
     const [user, setUser] = useState({})
     const [message, setMessage] = useState('')
     const router = useRouter()
-    // Stores user input in the user state
     const handleRegisterChange = (e) => {
+        // Stores user input in the user state
         setUser({
             ...user,
             [e.target.name]: e.target.value
         })
-    }
-    // Sends server the credentials that are to be added to DB  
+    };
+
     const handleRegisterButton = () => {
+        // Sends server the credentials that are to be added to the DB  
         fetch('http://127.0.0.1:8080/api/register', {
             method: 'POST',
             headers: {
@@ -32,9 +33,10 @@ function Register(props) {
                     setMessage(result.message)
                 }
             })
-    }
+    };
 
     return (
+        // Render Display
         <div className='login register column'>
             <div className="login-title">
                 <Image className="logo" src="/QuizWizNav3.png" alt="Logo" height={110} width={250} />
@@ -49,6 +51,6 @@ function Register(props) {
             </div>
         </div>
     )
-}
+};
 
 export default Register
