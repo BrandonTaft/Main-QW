@@ -30,7 +30,6 @@ function Leaderboard(props) {
     return (
         <div className='leaderboard-page '>
             <Background />
-            <div className="leader-main">
                 <ScoreCard />
                 <div className='flex'>
                     <div className='table-title w-50 ma-auto'>Wizard</div>
@@ -43,11 +42,7 @@ function Leaderboard(props) {
                         </tbody>
                     </table>
                 </div>
-            </div>
             <div className='ss'><div className='world'></div></div>
-            {/* <div className="planet" >
-                <Image src="/planet.png" alt="logo" layout='fill' />
-            </div> */}
         </div>
     )
 };

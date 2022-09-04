@@ -4,6 +4,8 @@ import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
+import { useRouter } from 'next/router';
+
 
 function StartQuiz() {
   const params = useParams();
@@ -13,6 +15,8 @@ function StartQuiz() {
   const [questions, setquestions] = useState([]);
   const [correctanswer, setcorrectanswer] = useState(null);
   const [answers, setanswers] = useState([]);
+  const router = useRouter()
+  const { type } = router.query
   let [quizfinished, setquizfinished] = useState(false);
   let currentanswers = [];
   let [currentscore, setcurrentscore] = useState(0);
@@ -23,11 +27,14 @@ function StartQuiz() {
 
 
 
-  function getquestions() {
-    fetch(`https://damp-spire-28696.herokuapp.com/quiz/${params["category"]}`)
+  function getquestions(type) {
+    // fetch(`https://damp-spire-28696.herokuapp.com/quiz/${type["category"]}`)
+    fetch(`http://127.0.0.1:8080/quiz/${type}`)
       .then(response => response.json())
       .then(result => {
+        console.log("q", result)
         setquestions([...result]);
+        
         playquiz();
       })
       .catch(error => console.log("error", error));
@@ -135,8 +142,10 @@ function StartQuiz() {
     setwizardName(localStorage.getItem('name'))
     console.log(wizardName)
     console.log(currentscore);
+    
+
     if (questions.length === 0) {
-      getquestions();
+      getquestions(type);
     }
     if (quizfinished === true) {
       gamesOver();

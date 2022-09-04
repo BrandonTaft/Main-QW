@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Image from 'next/image';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -34,10 +35,17 @@ function SelectionPage() {
                     <Grid className="grid-container" container spacing={{ xs: 1, sm: 2.5, md: 3 }} columns={{ xs: 2, sm: 3 }}>
                         <Grid className='square' item xs={1} >
                             <Box className="grid-item">
-                                <a href="/quiz/9">
-                                    <PsychologyIcon />
-                                    <div>GENERAL INFO</div>
-                                </a>
+                                <Link
+                                    href={{
+                                        pathname: '/quiz',
+                                        query: { type: '9'},
+                                    }}
+                                >
+                                    <div>
+                                        <PsychologyIcon />
+                                        <div>GENERAL INFO</div>
+                                    </div>
+                                </Link>
                             </Box>
                         </Grid>
                         <Grid className='square' item xs={1}>

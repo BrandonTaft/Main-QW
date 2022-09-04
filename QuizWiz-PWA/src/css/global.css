@@ -613,8 +613,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 70px;
-  width: 70px;
+  height: 3em;
+  width: 3em;
   color: var(--bs-white);
   border-radius: 50%;
   border: solid 3px var(--bs-yellow);
@@ -851,31 +851,35 @@ body {
 }
 
 /***********Leaderboard***********/
-.leaderboard-page {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
 .particle-bg {
   position: absolute;
   top: 0;
   z-index: 1;
 }
 
+.leaderboard-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 .lead-container {
-  top: 0;
-  bottom: 0;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   height: 90vw;
+  flex-grow: 1;
 }
 
 table {
   border-collapse: collapse;
-  font-size: 1.3em;
+  font-size: 1.5em;
   color: #ffffff;
-  width: 100%;
+  width: 100vw;
+  table-layout: fixed;
+}
+
+td {
+  overflow: hidden;
 }
 
 .table-title {
@@ -892,8 +896,15 @@ table {
   width: 40px;
 }
 
+.middle-column {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 55%;
+}
+
 .right-column {
-  text-align: center;
+  text-align: end;
+  padding: 0 16px;
 }
 
 .prize {
@@ -901,7 +912,6 @@ table {
 }
 
 .ss {
-  position: sticky !important;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -929,6 +939,12 @@ table {
 }
 
 @media ( min-width: 360px ) {
+  table {
+    font-size: 1.75em;
+  }
+}
+
+@media ( min-width: 375px ) {
   .lead-container {
     height: 100vw;
   }
@@ -939,17 +955,17 @@ table {
 }
 
 @media ( min-width: 400px ) {
+  .dial {
+    font-size: 1.5rem;
+  }
   .world {
     border-radius: 50%;
     height: 100%;
   }
 
   .lead-container {
-    height: 90vw;
-  }
-
-  table {
-    font-size: 2em;
+    height: 350px;
+    flex-grow: 0;
   }
 
   .prize {
@@ -969,16 +985,32 @@ table {
   }
 
   table {
-    font-size: 1.75em;
+    font-size: 1.5em;
+  }
+
+  .left-column {
+    padding-left: 24px;
+  }
+
+  .right-column {
+    padding-right: 32px;
   }
 
 }
 
 @media ( min-width: 600px ) {
+  .scorecard {
+    font-size: 1.5em;
+  }
+
+  .dial {
+    font-size: 1.75rem;
+  }
+
   .world {
     border-radius: 50%;
-    height: 100%;
-    width: 25em;
+    height: 20em;
+    width: 20em;
   }
 
   .lead-container {
@@ -997,11 +1029,136 @@ table {
     height: 60px !important;
   }
 
+  .right-column {
+    padding-right: 32px;
+  }
+
   .prize {
     top: 15px !important;
   }
+
+  .table-title {
+    font-size: 2em;
+  }
 }
 
+@media ( min-width: 900px ) {
+  .scorecard {
+    font-size: 2em;
+  }
+
+  .dial {
+    font-size: 2.25rem;
+    height: 3.5em;
+    width: 3.5em;
+  }
+
+  .world {
+    height: 25em;
+    width: 25em;
+  }
+
+  table {
+    font-size: 2.75em;
+  }
+
+  .middle-column {
+    overflow: hidden;
+  }
+
+  .table-title {
+    font-size: 2.5em;
+  }
+}
+
+@media ( min-width: 1200px ) {
+  .scorecard {
+    font-size: 2em;
+  }
+
+  .dial {
+    font-size: 2rem;
+    height: 3.5em;
+    width: 3.5em;
+  }
+
+  .world {
+    height: 25em;
+    width: 25em;
+  }
+
+  table {
+    font-size: 2em;
+  }
+
+  .table-title {
+    font-size: 2em;
+  }
+}
+
+@media (orientation: landscape) {
+  .ss {
+    display: none;
+  }
+
+  .scorecard {
+    font-size: 1.5em;
+  }
+
+  .dial {
+    font-size: 1.5rem;
+    height: 3em;
+    width: 3em;
+  }
+
+  .table-title {
+    font-size: 1.5em;
+  }
+
+  table {
+    font-size: 1.5em;
+    width: 75vw;
+    margin: auto;
+  }
+
+  .left-column img {
+    height: 40px !important;
+  }
+
+  .prize {
+    top: 5px !important;
+  }
+
+  .lead-container {
+    height: 100vw;
+  }
+
+}
+
+@media ( max-height: 800px ) {
+  .world {
+    width: 20rem;
+    height: 10rem;
+    border-radius: 10rem 10rem 0 0;
+  }
+
+  
+}
+
+@media ( min-height: 1200px ) {
+  .world {
+    height: 25em;
+    width: 25em;
+  }
+
+  .scorecard {
+    font-size: 2.5em;
+  }
+
+  .dial {
+    font-size: 2.5rem;
+  }
+}
 
 
 

@@ -22,8 +22,7 @@ function ScoreCard() {
         <div className="scorecard">
             <p>Your Score</p>
             <div className="dial">      
-                    {/* {myScore} */}
-                    33333
+                    {myScore}
             </div>
         </div>
     )
