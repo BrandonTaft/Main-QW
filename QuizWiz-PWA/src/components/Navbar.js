@@ -43,7 +43,7 @@ function Navbar() {
                 <Image src="/icons/exit.png" alt="logout icon" width={60} height={60} />
             </span>
             <Link href="/profile">
-                <Avatar className="avatar" sx={{ bgcolor: '#28175a', color: '#ceb728' }} {...stringAvatar(name.toUpperCase())} />
+                <Avatar className="avatar" sx={{ bgcolor: '#33236c', color: '#ceb728' }} {...stringAvatar(name.toUpperCase())} />
             </Link>
         </Box>
     )

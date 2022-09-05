@@ -36,7 +36,7 @@ function Profile(props) {
                     </p>
                 </div>
             </div>
-            <a className="btn profile-btn" href="/quiz">Ready</a>
+            <a className="btn profile-btn" href="/home">Ready</a>
             <div className="my-score" >
                 <Image src="/QuizWizGold.png" alt="logo" layout='fill' />
             </div>

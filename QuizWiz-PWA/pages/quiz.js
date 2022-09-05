@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import Image from 'next/image';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Popup from "reactjs-popup";
-import "reactjs-popup/dist/index.css";
 import { useRouter } from 'next/router';
 
 
 function StartQuiz() {
-  const params = useParams();
-
+  const router = useRouter()
+  const { cat } = router.query
   const [currentquestion, setcurrentquestion] = useState("");
   let [questioncounter, setquestioncounter] = useState(0);
   const [questions, setquestions] = useState([]);
   const [correctanswer, setcorrectanswer] = useState(null);
   const [answers, setanswers] = useState([]);
-  const router = useRouter()
-  const { type } = router.query
   let [quizfinished, setquizfinished] = useState(false);
   let currentanswers = [];
   let [currentscore, setcurrentscore] = useState(0);
@@ -27,15 +24,12 @@ function StartQuiz() {
 
 
 
-  function getquestions(type) {
-    // fetch(`https://damp-spire-28696.herokuapp.com/quiz/${type["category"]}`)
-    fetch(`http://127.0.0.1:8080/quiz/${type}`)
+  function getquestions(cat) {
+    // fetch(`https://damp-spire-28696.herokuapp.com/quiz/${cat["category"]}`)
+    fetch(`http://127.0.0.1:8080/quiz/${cat}`)
       .then(response => response.json())
       .then(result => {
-        console.log("q", result)
         setquestions([...result]);
-        
-        playquiz();
       })
       .catch(error => console.log("error", error));
   }
@@ -57,7 +51,7 @@ function StartQuiz() {
       .catch(error => console.log('error', error));
 
     var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Content-cat", "application/json");
     var requestOptions = {
       method: 'POST',
       headers: myHeaders,
@@ -65,7 +59,8 @@ function StartQuiz() {
       redirect: 'follow'
     };
 
-    fetch("https://damp-spire-28696.herokuapp.com/api/submit", requestOptions)
+    // fetch("https://damp-spire-28696.herokuapp.com/api/submit", requestOptions)
+    fetch("http://127.0.0.1:8080/api/submit", requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
@@ -140,12 +135,12 @@ function StartQuiz() {
 
   useEffect(() => {
     setwizardName(localStorage.getItem('name'))
-    console.log(wizardName)
+    console.log("name", wizardName)
     console.log(currentscore);
-    
+
 
     if (questions.length === 0) {
-      getquestions(type);
+      getquestions(cat);
     }
     if (quizfinished === true) {
       gamesOver();
@@ -155,66 +150,50 @@ function StartQuiz() {
 
   return (
 
-    <div id="quiz-page">
-      <div id="quizes">
-        <div style={{ height: "100%", color: "whitesmoke", textAlign: "center" }}>
-          {quizfinished != true ? (
-            <div>
-              <div className="quizQuestion"> {currentquestion}</div>
-              {correctanswer != null ? null : (
-                <Button onClick={() => playquiz()}>Start Quiz </Button>
-              )}
-
-
-              <br />
-              <br />
-              {correctanswer != null ? (
-                <ButtonGroup
-                  className="ButtonGroup"
-                  vertical
-                  block
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    maxWidth: "90%"
-                  }}
-                >
-                  <Button onClick={() => checkAnswer(0)} id="q-btn">{answers[0]}</Button>
-                  <br />
-                  <Button onClick={() => checkAnswer(1)} id="q-btn">{answers[1]}</Button>
-                  <br />
-                  <Button onClick={() => checkAnswer(2)} id="q-btn">{answers[2]}</Button>
-                  <br />
-                  <Button onClick={() => checkAnswer(3)} id="q-btn">{answers[3]}</Button>
-                  <br />
-                </ButtonGroup>
-              ) : null}
-            </div>
-          ) : (
-            <div>
-              {/* <Link to={{ pathname: `/homepage` }}>
-                <Button id="sub-btn">
-                  <div>Return Home</div>
-                </Button>
-              </Link> */}
-              <Popup modal trigger={<Button id="sub-btn">Submit Quiz</Button>}>
-                {" "}
-                <div id="final-blurb">
-                  <h1>Good Job!</h1>
-                  Your score was {finalscore}<br />
-                  Your previous high score is {highscore}
-
-                </div>
-                {" "}
-              </Popup>
-            </div>
-          )}
-        </div>
-        <div className="fill-quiz">
-          <img src="/wiz1.png" />
-        </div>
+    <div className="quiz-page">
+      <div className="background">
+        <Image className="rotate" src="/QuizWizGold.png" alt="wizard" width={200} height={220} />
       </div>
+      <div className="quiz-container">
+        {quizfinished != true ? (
+          <div className="question-container" id="question-container">
+            <div className="question"> {currentquestion}</div>
+            {correctanswer != null ? null : (
+              <button className="quiz-btn btn" onClick={() => playquiz()}><span className="btn-text">Start Quiz</span></button>
+            )}
+            {correctanswer != null ? (
+              <ButtonGroup
+                className="button-group"
+                orientation="vertical"
+                aria-label="button group"
+                variant="text"
+              >
+                <Button onClick={() => checkAnswer(0)} id="q-btn">{answers[0]}</Button>
+                <Button onClick={() => checkAnswer(1)} id="q-btn">{answers[1]}</Button>
+                <Button onClick={() => checkAnswer(2)} id="q-btn">{answers[2]}</Button>
+                <Button onClick={() => checkAnswer(3)} id="q-btn">{answers[3]}</Button>
+              </ButtonGroup>
+            ) : null}
+          </div>
+        ) : (
+          <div>
+            {/* <Popup modal trigger={<Button id="sub-btn">Submit Quiz</Button>}>
+              {" "} */}
+              <div className="done">
+                <h1>Good Job!</h1>
+                Your score was {finalscore}
+                Your previous high score is {highscore}
+              </div>
+              {/* {" "}
+            </Popup> */}
+          </div>
+        )}
+
+
+      </div>
+      {/* <div className="quiz-fill">
+          <Image src="/wiz1.png" alt="wizard" width={217} height={278} />
+      </div> */}
     </div>
   );
 }

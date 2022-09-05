@@ -2,7 +2,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import MovieIcon from '@mui/icons-material/Movie';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
@@ -14,23 +13,9 @@ import SportsFootballIcon from '@mui/icons-material/SportsFootball';
 import LanguageIcon from '@mui/icons-material/Language';
 import BoltIcon from '@mui/icons-material/Bolt';
 function SelectionPage() {
-    const theme = createTheme({
-        breakpoints: {
-            values: {
-                xs: 0,
-                cs: 400,
-                sm: 600,
-                md: 900,
-                lg: 1200,
-                xl: 1536,
-            },
-        },
-    });
-
+    
     return (
-        <ThemeProvider theme={theme}>
             <div className="container row column" >
-
                 <Box className='m-auto'>
                     <Grid className="grid-container" container spacing={{ xs: 1, sm: 2.5, md: 3 }} columns={{ xs: 2, sm: 3 }}>
                         <Grid className='square' item xs={1} >
@@ -38,10 +23,10 @@ function SelectionPage() {
                                 <Link
                                     href={{
                                         pathname: '/quiz',
-                                        query: { type: '9'},
+                                        query: { cat: '9' },
                                     }}
                                 >
-                                    <div>
+                                    <div className="yellow">
                                         <PsychologyIcon />
                                         <div>GENERAL INFO</div>
                                     </div>
@@ -50,90 +35,170 @@ function SelectionPage() {
                         </Grid>
                         <Grid className='square' item xs={1}>
                             <Box className="grid-item">
-                                <a href="/quiz/11">
-                                    <MovieIcon />
-                                    <div>MOVIES</div>
-                                </a>
+                                <Link
+                                    href={{
+                                        pathname: '/quiz',
+                                        query: { cat: '11' },
+                                    }}
+                                >
+                                    <div className="yellow">
+                                        <MovieIcon />
+                                        <div>MOVIES</div>
+                                    </div>
+                                </Link>
                             </Box>
                         </Grid>
                         <Grid className='square' item xs={1}>
                             <Box className="grid-item">
-                                <a href="/quiz/22">
-                                    <LanguageIcon />
-                                    <div>GEOGRAPHY</div>
-                                </a>
+                                <Link
+                                    href={{
+                                        pathname: '/quiz',
+                                        query: { cat: '22' },
+                                    }}
+                                >
+                                    <div className="yellow">
+                                        <LanguageIcon />
+                                        <div>GEOGRAPHY</div>
+                                    </div>
+                                </Link>
                             </Box>
                         </Grid>
                         <Grid className='square' item xs={1}>
                             <Box className="grid-item">
-                                <a href="/quiz/10">
-                                    <AutoStoriesIcon />
-                                    <div>BOOKS</div>
-                                </a>
+                                <div className="yellow">
+                                    <Link
+                                        href={{
+                                            pathname: '/quiz',
+                                            query: { cat: '10' },
+                                        }}
+                                    >
+                                         <div className="yellow">
+                                        <AutoStoriesIcon />
+                                        <div>BOOKS</div>
+                                        </div>
+                                    </Link>
+
+                                </div>
                             </Box>
                         </Grid>
                         <Grid className='square' item xs={1}>
                             <Box className="grid-item">
-                                <a href="/quiz/15">
-                                    <SportsEsportsIcon />
-                                    <div>VIDEO GAMES</div>
-                                </a>
+                                <Link
+                                    href={{
+                                        pathname: '/quiz',
+                                        query: { cat: '15' },
+                                    }}
+                                >
+                                    <div className="yellow">
+                                        <SportsEsportsIcon />
+                                        <div>VIDEO GAMES</div>
+                                    </div>
+                                </Link>
                             </Box>
                         </Grid>
                         <Grid className='square' item xs={1}>
                             <Box className="grid-item">
-                                <a href="/quiz/12">
-                                    <MusicNoteIcon />
-                                    <div>MUSIC</div>
-                                </a>
+                                <Link
+                                    href={{
+                                        pathname: '/quiz',
+                                        query: { cat: '12' },
+                                    }}
+                                >
+                                    <div className="yellow">
+                                        <MusicNoteIcon />
+                                        <div>MUSIC</div>
+                                    </div>
+                                </Link>
                             </Box>
                         </Grid>
                         <Grid className='square' item xs={1}>
                             <Box className="grid-item">
-                                <a href="/quiz/14">
-                                    <LiveTvIcon />
-                                    <div>TV</div>
-                                </a>
+                                <Link
+                                    href={{
+                                        pathname: '/quiz',
+                                        query: { cat: '14' },
+                                    }}
+                                >
+                                    <div className="yellow">
+                                        <LiveTvIcon />
+                                        <div>TV</div>
+                                    </div>
+                                </Link>
                             </Box>
                         </Grid>
                         <Grid className='square' item xs={1}>
                             <Box className="grid-item">
-                                <a href="/quiz/29">
-                                    <BoltIcon />
-                                    <div>COMICS</div>
-                                </a>
+                                <Link
+                                    href={{
+                                        pathname: '/quiz',
+                                        query: { cat: '29' },
+                                    }}
+                                >
+                                    <div className="yellow">
+                                        <BoltIcon />
+                                        <div>COMICS</div>
+                                    </div>
+                                </Link>
                             </Box>
                         </Grid>
                         <Grid className='square' item xs={1}>
                             <Box className="grid-item">
-                                <a href="/quiz/20">
-                                    <BalanceIcon />
-                                    <div>MYTHOLOGY</div>
-                                </a>
+                                <Link
+                                    href={{
+                                        pathname: '/quiz',
+                                        query: { cat: '20' },
+                                    }}
+                                >
+                                    <div className="yellow">
+                                        <BalanceIcon />
+                                        <div>MYTHOLOGY</div>
+                                    </div>
+                                </Link>
                             </Box>
                         </Grid>
                         <Grid className='square' item xs={1}>
                             <Box className="grid-item">
-                                <a href="/quiz/21">
-                                    <SportsFootballIcon />
-                                    <div>SPORTS</div>
-                                </a>
+                                <Link
+                                    href={{
+                                        pathname: '/quiz',
+                                        query: { cat: '21' },
+                                    }}
+                                >
+                                    <div className="yellow">
+                                        <SportsFootballIcon />
+                                        <div>SPORTS</div>
+                                    </div>
+                                </Link>
                             </Box>
                         </Grid>
                         <Grid className='square' item xs={1}>
                             <Box className="grid-item">
-                                <a href="/quiz/9">
-                                    <PsychologyIcon />
-                                    <div>GENERAL</div>
-                                </a>
+                                <Link
+                                    href={{
+                                        pathname: '/quiz',
+                                        query: { cat: '9' },
+                                    }}
+                                >
+                                    <div className="yellow">
+                                        <PsychologyIcon />
+                                        <div>GENERAL</div>
+                                    </div>
+                                </Link>
                             </Box>
                         </Grid>
                         <Grid className='square' item xs={1}>
                             <Box className="grid-item">
-                                <a href="/quiz/9">
-                                    <PsychologyIcon />
-                                    <div>GENERAL</div>
-                                </a>
+                                <Link
+                                    href={{
+                                        pathname: '/quiz',
+                                        query: { cat: '9' },
+                                    }}
+                                >
+                                    <div className="yellow">
+                                        <PsychologyIcon />
+                                        <div>GENERAL</div>
+                                    </div>
+                                </Link>
                             </Box>
                         </Grid>
                     </Grid>
@@ -142,7 +207,6 @@ function SelectionPage() {
                     <Image className='selection img' alt="wizard" src="/wiz5.png" layout='fill' objectFit='scale-down' />
                 </div>
             </div>
-        </ThemeProvider>
     )
 }
 

@@ -473,10 +473,8 @@ app.get("/api/userscore", async (req, res) => {
 //***************************Get questions***************************//
 
 app.get("/quiz/:category", (req, res) => {
-    console.log("u",req.user);
-    console.log("r", req.params["category"])
+    console.log(req.params)
     let category = req.params["category"];
-
     if (category == 100) {
         axios
             .get(
