@@ -39,9 +39,9 @@ function Register(props) {
         // Render Display
         <div className='login register column'>
             <div className="login-title">
-                <Image className="logo" src="/QuizWizNav3.png" alt="Logo" height={110} width={250} />
+                <Image className="logo" src="/QuizWizNav3.png" alt="Logo" height={110} width={250} priority='true' />
             </div>
-            <h1>REGISTER</h1>
+            <h2>REGISTER</h2>
             <div className="login-Container column">
                 <input className="log-RegText" type="text" name="username" onChange={handleRegisterChange} placeholder="User name" />
                 <input className="log-RegText" type="password" name="password" onChange={handleRegisterChange} placeholder="Password" />

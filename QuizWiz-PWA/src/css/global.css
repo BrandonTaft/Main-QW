@@ -127,7 +127,7 @@ body {
 }
 
 .flex {
-  display: flex
+  display: flex;
 }
 
 @media (min-width: 1000px) {
@@ -152,7 +152,8 @@ body {
 
 /****************** LOGIN AND REGISTER *******************/
 .login {
-  height: 100vh;
+  margin-top: auto;
+  margin-bottom: auto;
   display: flex;
 }
 
@@ -160,19 +161,20 @@ body {
   justify-content: center;
 }
 
-.register-btn {
-  margin-top: 3em !important;
-}
-
-.register h1 {
+.register h2 {
   color: white;
   align-self: center;
+}
+
+.register-btn {
+  margin-top: 2em;
 }
 
 .login-title {
   display: flex;
   justify-content: center;
   padding: 20px;
+  padding-top: 0;
 }
 
 .login-Container {
@@ -185,8 +187,6 @@ body {
 .icon-container {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  justify-content: center;
   align-items: center;
 }
 
@@ -212,6 +212,7 @@ body {
   transition: all ease-in-out 0.4s;
   text-decoration: none;
   padding: 2px;
+  margin-top: 1em;
 }
 
 #google-btn {
@@ -224,7 +225,6 @@ body {
 
 #facebook-btn {
   background-color: #304a7d;
-  margin: 32px;
 }
 
 #facebook-btn:active {
@@ -232,7 +232,7 @@ body {
 }
 
 #github-btn {
-  background-color: black;
+  background-color: #121212;
 }
 
 #github-btn:active {
@@ -260,19 +260,54 @@ body {
 }
 
 .message {
+  z-index: 5;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  background-color: #121212;
+  border: 2px solid #000;
+  box-shadow: rgb(0 0 0 / 20%) 0px 11px 15px -7px,
+    rgb(0 0 0 / 14%) 0px 24px 38px 3px, rgb(0 0 0 / 12%) 0px 9px 46px 8px;
+  padding: 0 60px 30px;
   text-align: center;
-  font-size: x-large;
+  font-size: 1.5em;
   color: red;
+}
+
+.remove {
+  visibility: hidden;
 }
 
 @media (min-width: 400px) {
   .login-title {
-    padding: 50px;
+    padding: 25px;
+  }
+
+  .login-title img {
+    height: 120px !important;
+    width: 300px !important;
   }
 
   .btn-text {
     font-size: 1.3rem;
   }
+
+  .log-RegText {
+    font-size: 1.3em;
+  }
+
+  .message {
+    width: 150px;
+    font-size: 1.75em;
+  }
+
+  .passport-btn img {
+    height: 50px !important;
+    width: 50px !important;
+  }
+
 }
 
 @media (min-width: 500px) {
@@ -291,31 +326,45 @@ body {
 
 @media (min-width: 768px) {
   .login-title img {
-    height: 150px !important;
-    width: 300px !important;
+    height: 140px !important;
+    width: 350px !important;
   }
 
   .log-RegText {
-    font-size: 1.5em;
+    font-size: 1.3em;
   }
 
   .btn {
     font-size: 1.5em;
   }
 
+  .log-btn {
+    font-size: 1.2em;
+  }
+
   .btn-text {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+  }
+
+  .passport-btn {
+    margin-top: 2em;
   }
 
   .passport-btn img {
     height: 60px !important;
     width: 60px !important;
   }
+
+  .message {
+    width: 200px;
+    font-size: 2em;
+  }
+
 }
 
 @media (min-width: 900px) {
   .login-title img {
-    height: 200px !important;
+    height: 160px !important;
     width: 400px !important;
     margin-bottom: 2em;
   }
@@ -326,7 +375,7 @@ body {
   }
 
   .btn {
-    font-size: 2em;
+    font-size: 1.75em;
     margin-bottom: 1em;
   }
 
@@ -334,17 +383,26 @@ body {
     font-size: 2rem;
   }
 
-  #facebook-btn {
-    margin: 45px;
-  }
-
   .passport-btn img {
     height: 80px !important;
     width: 80px !important;
   }
+
+  .message {
+    width: 250px;
+    font-size: 2.5em;
+  }
+
 }
 
+/******  Tablets and Larger Landscape ******/
 @media (orientation: landscape) {
+  .login-title img {
+    /* height: 120px !important;
+    width: 240px !important; */
+    margin-bottom: 2em;
+  }
+
   .register h1 {
     display: none;
   }
@@ -354,13 +412,31 @@ body {
   }
 
   .log-RegText {
-    width: 60%;
-    font-size: 1.6em;
+    width: 50%;
+    font-size: 1.3em;
   }
 
   .btn {
     font-size: 1.5em;
   }
+
+  .log-btn {
+    font-size: 1.2em;
+    width: 30%;
+  }
+
+  .btn-text {
+    font-size: 1.3em;
+  }
+
+  .passport-btn {
+    width: 40%;
+  }
+
+  .passport-btn img {
+    height: 50px !important;
+    width: 50px !important;
+}
 
   #google-btn {
     margin-top: 8px;
@@ -369,16 +445,23 @@ body {
   .icon-container {
     padding-bottom: 24px;
   }
+
+  .message {
+    width: 150px;
+    font-size: 1.5em;
+  }
+
 }
 
-@media (max-height: 500px) {
+/******  Phone Landscape ******/
+@media (max-height: 500px) { 
   .login-title {
     padding: 10px;
   }
 
   .login-title img {
-    height: 80px !important;
-    width: 160px !important;
+    height: 100px !important;
+    width: 250px !important;
   }
 
   .log-RegText {
@@ -393,19 +476,61 @@ body {
     font-size: 1em;
   }
 
-  #facebook-btn {
-    margin: 10px;
-  }
-
   .btn-text {
     font-size: 1rem;
   }
 
+  .passport-btn {
+    margin-top: 1em;
+  }
+
   .passport-btn img {
-    height: 40px !important;
-    width: 40px !important;
+    height: 30px !important;
+    width: 30px !important;
+  }
+
+  .message {
+    width: 75px;
+    font-size: 1.25em;
   }
 }
+
+@media (min-width: 1200px) {
+  .login-Container {
+    margin-bottom: 1em;
+  }
+
+  .log-RegText {
+    margin-bottom: .5em;
+    width: 40%;
+    font-size: 1.25em;
+  }
+
+  .log-btn {
+    width: 30%;
+    margin-bottom: .5em;
+    font-size: 1.2em;
+  }
+
+  .btn-text {
+    font-size: 1.3em;
+  }
+
+  .passport-btn {
+    width: 30%;
+  }
+
+  .passport-btn img {
+    height: 50px !important;
+    width: 50px !important;
+  }
+
+  .message {
+    width: 250px;
+    font-size: 2.5em;
+  }
+}
+
 /****************** NAVBAR ********************/
 .iconBar {
   display: flex;
@@ -431,7 +556,6 @@ body {
     width: 60px !important;
     font-size: 2.3rem !important;
   }
-
 }
 
 @media (min-width: 768px) {
@@ -453,15 +577,12 @@ body {
     width: 80px !important;
     font-size: 2.5rem !important;
   }
-
 }
 
 @media (orientation: landscape) {
   .iconBar {
     margin-bottom: 0;
   }
-
-  
 }
 
 @media (max-height: 500px) {
@@ -473,7 +594,6 @@ body {
     height: 80px !important;
     width: 80px !important;
   }
-
 }
 
 /****************** HOME ********************/
@@ -634,7 +754,6 @@ body {
   font-size: 1.3rem;
 }
 
-
 /*************PROFILE PAGE****************/
 .profile-page {
   display: flex;
@@ -695,7 +814,6 @@ body {
 .profile-page {
   padding-bottom: 8px;
 }
-
 
 @media (min-width: 360px) {
   .profile-name {
@@ -813,9 +931,9 @@ body {
 }
 
 @media (orientation: landscape) {
-.profile-page {
-  padding-bottom: 24px;
-}
+  .profile-page {
+    padding-bottom: 24px;
+  }
 
   .profile-name {
     margin-top: 8px;
@@ -937,7 +1055,7 @@ td {
   width: 20rem;
   height: 10rem;
   background-color: #050610;
-  background-image: url('/e.jpg');
+  background-image: url("/e.jpg");
   border-radius: 10rem 10rem 0 0;
   position: relative;
   animation-name: rotate;
@@ -947,17 +1065,21 @@ td {
 }
 
 @keyframes rotate {
-  0% { background-position: 0px; }
-  100% { background-position: 1024px; }
+  0% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: 1024px;
+  }
 }
 
-@media ( min-width: 360px ) {
+@media (min-width: 360px) {
   table {
     font-size: 1.75em;
   }
 }
 
-@media ( min-width: 375px ) {
+@media (min-width: 375px) {
   .lead-container {
     height: 100vw;
   }
@@ -967,7 +1089,7 @@ td {
   }
 }
 
-@media ( min-width: 400px ) {
+@media (min-width: 400px) {
   .dial {
     font-size: 1.5rem;
   }
@@ -986,7 +1108,7 @@ td {
   }
 }
 
-@media ( min-width: 500px ) {
+@media (min-width: 500px) {
   .world {
     width: 20rem;
     height: 10rem;
@@ -1008,10 +1130,9 @@ td {
   .right-column {
     padding-right: 32px;
   }
-
 }
 
-@media ( min-width: 600px ) {
+@media (min-width: 600px) {
   .scorecard {
     font-size: 1.5em;
   }
@@ -1055,7 +1176,7 @@ td {
   }
 }
 
-@media ( min-width: 900px ) {
+@media (min-width: 900px) {
   .scorecard {
     font-size: 2em;
   }
@@ -1084,7 +1205,7 @@ td {
   }
 }
 
-@media ( min-width: 1200px ) {
+@media (min-width: 1200px) {
   .scorecard {
     font-size: 2em;
   }
@@ -1145,20 +1266,17 @@ td {
   .lead-container {
     height: 100vw;
   }
-
 }
 
-@media ( max-height: 800px ) {
+@media (max-height: 800px) {
   .world {
     width: 20rem;
     height: 10rem;
     border-radius: 10rem 10rem 0 0;
   }
-
-  
 }
 
-@media ( min-height: 1200px ) {
+@media (min-height: 1200px) {
   .world {
     height: 25em;
     width: 25em;
@@ -1226,8 +1344,8 @@ td {
 
 .button-group button {
   font-size: 1.3rem !important;
-  padding-top: .5em;
-  padding-bottom: .5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
 }
 
 .done {
@@ -1250,7 +1368,3 @@ td {
     transform: rotateY(359deg);
   }
 }
-
-
-
-

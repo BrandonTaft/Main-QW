@@ -126,7 +126,7 @@ app.post("/api/login", async (req, res) => {
             }
         });
     } else {
-        res.json({ message: "Username Incorrect" });
+        res.json({ message: "Incorrect Username " });
     }
 });
 
