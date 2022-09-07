@@ -4,7 +4,6 @@ const cors = require("cors");
 const app = express();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const sequelize = require("sequelize");
 const axios = require("axios");
 const cookieParser = require("cookie-parser");
 const FacebookStrategy = require("passport-facebook").Strategy;
@@ -14,28 +13,24 @@ const LocalStrategy = require("passport-local").Strategy;
 const User = require("./models");
 const session = require("express-session");
 var connect = require("connect");
-const { where } = require("sequelize");
+const sequelize = require("sequelize");
+const {where, Op} = require("sequelize");
 var flash = require("flash");
 var passport = require("passport");
 const JwtStrategy = require("passport-jwt").Strategy,
-    ExtractJwt = require("passport-jwt").ExtractJwt;
+ExtractJwt = require("passport-jwt").ExtractJwt;
 const { v4: uuidv4 } = require("uuid"); // uuid, To call: uuidv4();
-
 require("dotenv").config();
-
 const opts = {};
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = process.env.JWT_SECRET_KEY;
-
 const salt = 10;
-
 require("dotenv").config();
 app.use(
     cors({
         origin: "*",
         methods: "GET, POST, PATCH, DELETE, PUT",
         allowedHeaders: "Content-Type, Authorization"
-
     })
 );
 //app.use(cors());
@@ -54,9 +49,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.use(flash());
-//app.use(session({ secret: 'so secret' }))
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -65,14 +58,13 @@ app.use(passport.session());
 app.post("/api/register", async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
-
-
-    let persistedUser = await models.Users.findOne({
-        where: {
-            name: username
+    const persistedUser = await models.Users.findOne({
+        where:{
+            name : sequelize.where(sequelize.fn('LOWER', sequelize.col('name')),{
+                [Op.like]:username.toLowerCase()
+            })
         }
     })
-
     if (persistedUser == null) {
         bcrypt.hash(password, salt, async (error, hash) => {
             console.log(hash)
@@ -84,36 +76,32 @@ app.post("/api/register", async (req, res) => {
                     password: hash,
                     high_score: "0"
                 })
-
                 let savedUser = await user.save()
                 if (savedUser != null) {
                     res.json({ success: true })
-
                 }
             }
         })
     } else {
-        console.log('res.json({ message: "Existing User" })')
+        res.json({ message: "That name is taken." })
     }
-
 })
 //***************************LOGIN PAGE***************************//
 
 app.post("/api/login", async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
-
-    let user = await models.Users.findOne({
-        where: {
-            name: username
+    const user = await models.Users.findOne({
+        where:{
+            name : sequelize.where(sequelize.fn('LOWER', sequelize.col('name')),{
+                [Op.like]:username.toLowerCase()
+            })
         }
     });
-
     if (user != null) {
         bcrypt.compare(password, user.password, (error, result) => {
             if (result) {
                 const token = jwt.sign({ name: username }, process.env.JWT_SECRET_KEY);
-
                 res.json({
                     success: true,
                     token: token,
@@ -122,11 +110,11 @@ app.post("/api/login", async (req, res) => {
                     user_id: user.id
                 });
             } else {
-                res.json({ success: false, message: "Not Authenticated" });
+                res.json({ success: false, message: "You Shall Not Pass" });
             }
         });
     } else {
-        res.json({ message: "Incorrect Username " });
+        res.json({ message: "That is not your username" });
     }
 });
 

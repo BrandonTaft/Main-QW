@@ -15,6 +15,11 @@ function Register(props) {
     };
 
     const handleRegisterButton = () => {
+        if (user.username === '') {
+            setMessage("You must enter a username")
+        } else if (user.password === '') {
+            setMessage("You must enter a password")
+        } else {
         // Sends server the credentials that are to be added to the DB  
         fetch('http://127.0.0.1:8080/api/register', {
             method: 'POST',
@@ -29,12 +34,16 @@ function Register(props) {
                     router.push('/')
                 }
                 else {
+                    console.log("test",result)
                     // Display error message from server if success != true
                     setMessage(result.message)
                 }
             })
+        }
     };
-
+    const remove = function () {
+        setMessage("")
+    };
     return (
         // Render Display
         <div className='login register column'>
@@ -45,7 +54,11 @@ function Register(props) {
             <div className="login-Container column">
                 <input className="log-RegText" type="text" name="username" onChange={handleRegisterChange} placeholder="User name" />
                 <input className="log-RegText" type="password" name="password" onChange={handleRegisterChange} placeholder="Password" />
-                {message && <p className="message" >{message}</p>}
+                {message && <div id="message" className="message register-message">
+                    <p  >{message}</p>
+                    <Image className='m-img' src='/wiz1.png' alt="Wizrd" layout='responsive' height={100} width={80} />
+                    <button onClick={remove}>Ok</button>
+                </div>}
                 <a className="btn log-btn register-btn" onClick={handleRegisterButton}>Register</a>
                 <a href="/" className="btn log-btn">Back To Login</a>
             </div>
