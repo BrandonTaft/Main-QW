@@ -31,16 +31,16 @@ function Navbar() {
         <Box className="iconBar">
             <Link href="/home">
                 <a>
-                    <Image src="/icons/house.png" alt="home icon" width={60} height={60} />
+                    <Image src="/icons/house.png" alt="home icon" width={120} height={120} quality={100}  />
                 </a>
             </Link>
             <Link href="/leaderboard">
                 <a>
-                    <Image className="trophy" src="/icons/trophy.png" alt="leaderboard icon" width={55} height={60} />
+                    <Image className="trophy" src="/icons/trophy1.png" alt="leaderboard icon" width={120} height={120} quality={100} />
                 </a>
             </Link>
             <span onClick={logOut} >
-                <Image src="/icons/exit.png" alt="logout icon" width={60} height={60} />
+                <Image src="/icons/exit.png" alt="logout icon" width={120} height={120} quality={100} />
             </span>
             <Link href="/profile">
                 <Avatar className="avatar" sx={{ bgcolor: '#33236c', color: '#ceb728' }} {...stringAvatar(name.toUpperCase())} />

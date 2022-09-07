@@ -205,11 +205,11 @@ function SelectionPage() {
             </Box>
             <div className="fill">
                 <Image
-                    className='selection img'
+                    className='wiz-img'
                     alt="wizard"
-                    src="/wiz5.png"
+                    src="/wiz8.png"
                     layout='fill'
-                    objectFit='scale-down'
+                    objectFit='cover'
                     priority='true'
                 />
             </div>

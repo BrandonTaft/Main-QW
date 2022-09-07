@@ -121,11 +121,6 @@ body {
   height: 100vh;
 }
 
-.container {
-  display: flex;
-  height: 86%;
-}
-
 .flex {
   display: flex;
 }
@@ -591,8 +586,19 @@ body {
   z-index: 5;
 }
 
+.iconBar img {
+  height: 60px !important;
+  width: 60px !important;
+}
+
 .trophy {
   top: 2px !important;
+}
+
+.avatar {
+  height: 45px !important;
+  width: 45px !important;
+  font-size: 1.75rem !important;
 }
 
 @media (min-width: 390px) {
@@ -622,10 +628,16 @@ body {
 }
 
 @media (min-width: 900px) {
+  .iconBar img {
+    height: 120px !important;
+    width: 120px !important;
+  }
+
+
   .avatar {
-    height: 80px !important;
-    width: 80px !important;
-    font-size: 2.5rem !important;
+    height: 90px !important;
+    width: 90px !important;
+    font-size: 2.75rem !important;
   }
 }
 
@@ -647,12 +659,17 @@ body {
 }
 
 /****************** HOME ********************/
+.container {
+  display: flex;
+  flex-grow: 1;
+  padding-bottom: 10px;
+}
+
 .fill {
   display: flex;
   position: relative;
-  width: 100%;
-  height: 30%;
-  margin: auto;
+  flex-grow: 1;
+  margin-top: 10px;
 }
 
 .grid-container {
@@ -675,6 +692,20 @@ body {
   text-decoration: none;
 }
 
+.grid-item svg {
+  font-size: 1.5em;
+}
+
+.fill img {
+  animation: floating 2s ease-in-out infinite
+}
+
+@keyframes floating {
+  0% { transform: translate(0,  0px); }
+  50%  { transform: translate(0, 8px); }
+  100%   { transform: translate(0, -0px); }   
+}
+
 @media (min-width: 340px) {
   .grid-item {
     padding: 8px 0;
@@ -682,16 +713,14 @@ body {
   }
 }
 
-@media (min-width: 390px) {
-  .fill {
-    height: 35%;
-  }
-}
-
 @media (min-width: 400px) {
   .grid-item {
     padding: 10px 0px;
     font-size: 1.2rem;
+  }
+
+  .grid-item svg {
+    font-size: 1.75em;
   }
 }
 
@@ -707,15 +736,23 @@ body {
     font-size: 1.5rem;
     padding: 10px 0;
   }
+}
 
+@media (min-width: 768px) {
   .grid-item svg {
-    font-size: 2rem !important;
+    font-size: 2.25em;
   }
 
   .fill {
-    height: 45%;
+    margin-top: 20px;
+  }
+
+  .container {
+    padding-bottom: 20px;
+    margin-top: 20px;
   }
 }
+
 
 @media (min-width: 820px) {
   .grid-item {
@@ -726,10 +763,15 @@ body {
 @media (min-width: 900px) {
   .grid-item {
     font-size: 1.8rem;
+    padding: 20px 0;
   }
 
   .grid-item svg {
-    font-size: 3rem !important;
+    font-size: 3.5rem !important;
+  }
+
+  .container {
+    margin-top: 60px;
   }
 }
 
@@ -749,17 +791,24 @@ body {
     display: none;
   }
 
-  svg {
-    font-size: 1rem;
+  .grid-item svg {
+    font-size: 1.75em;
   }
 
   .container {
     height: fit-content;
+    margin: auto;
   }
 
   .grid-container {
     padding-left: 32px;
     padding-right: 32px;
+  }
+}
+
+@media (max-height: 600px) {
+  .grid-item svg {
+    font-size: 1.85rem !important;
   }
 }
 
@@ -770,6 +819,7 @@ body {
 
   .grid-item {
     font-size: 1.1rem;
+    padding: 10px 0;
   }
 }
 
@@ -796,12 +846,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 3em;
-  width: 3em;
+  min-height: 3em;
+  min-width: 3em;
   color: var(--bs-white);
   border-radius: 50%;
   border: solid 3px var(--bs-yellow);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
 }
 
 /*************PROFILE PAGE****************/
@@ -809,7 +859,7 @@ body {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 }
 
 .profile-name {
@@ -851,7 +901,7 @@ body {
   background-color: var(--bs-purple);
   border: 1px solid var(--bs-yellow);
   color: var(--bs-yellow);
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .my-score {
@@ -864,6 +914,15 @@ body {
 }
 
 @media (min-width: 360px) {
+  .profile-page {
+    padding-bottom: 45px;
+  }
+
+  .profile-btn {
+    margin-bottom: 45px;
+    font-size: 1.2em;
+  }
+
   .profile-name {
     margin-top: 10px;
   }
@@ -951,17 +1010,25 @@ body {
   }
 
   .profile-btn {
-    margin-top: auto;
+    font-size: 1.75em;
   }
 }
 
 @media (min-width: 900px) {
+  .profile-page {
+    padding-bottom: 60px;
+  }
+
   .profile-name {
     margin-top: 54px;
   }
 
+  .profile-name p {
+    font-size: 2.3rem;
+  }
+
   .welcome p {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
   }
 
   .resize {
@@ -970,7 +1037,8 @@ body {
 
   .profile-btn {
     font-size: 2em;
-    padding: 20px 0;
+    padding: 18px 0;
+    margin-bottom: 60px;
   }
 }
 
@@ -993,15 +1061,27 @@ body {
 
   .resize {
     width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
   }
 
   .profile-btn {
-    font-size: 1.7em;
+    font-size: 1.8em;
     padding: 10px 0;
     margin-top: 10px;
+    margin-bottom: 30px;
   }
+}
+
+@media (max-height: 500px) {
+.avatar {
+  height: 60px !important;
+  width: 60px !important;
+  font-size: 2.3rem !important;
+}
+
+.profile-btn {
+  font-size: 1.4em;
+}
 }
 
 @media (max-height: 600px) {
@@ -1020,12 +1100,18 @@ body {
   .welcome p {
     font-size: 1.5rem;
   }
+
 }
 
 @media (min-width: 1200px) {
-.resize {
-  width: 65%;
+.profile-name p {
+  font-size: 2.25em;
 }
+
+.welcome p {
+  font-size: 2.25rem;
+}
+
 }
 /***********Leaderboard***********/
 .particle-bg {
@@ -1277,10 +1363,6 @@ td {
 }
 
 @media (orientation: landscape) {
-  .ss {
-    display: none;
-  }
-
   .scorecard {
     font-size: 1.5em;
   }
@@ -1309,9 +1391,9 @@ td {
     top: 5px !important;
   }
 
-  .lead-container {
+  /* .lead-container {
     height: 100vw;
-  }
+  } */
 }
 
 @media (max-height: 800px) {
@@ -1334,6 +1416,16 @@ td {
 
   .dial {
     font-size: 2.5rem;
+  }
+}
+
+@media (max-height: 500px) {
+  .lead-container {
+    height: 100vw;
+  }
+  
+  .ss {
+    display: none;
   }
 }
 
@@ -1380,7 +1472,7 @@ td {
 
 .question {
   background-color: #050610;
-  min-height: 33%;
+  
 }
 
 .button-group {

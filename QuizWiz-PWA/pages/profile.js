@@ -32,7 +32,7 @@ function Profile(props) {
                     <p className="grey">
                         Welcome to QuizWiz! The hottest trivia app in all 9&nbsp;realms. Now it's time to
                         select a topic and rack up as many correct answers as you can to place on
-                        the leaderboard. You must prove to everyone that you are a wizard <span className="yellow">{wizardName}</span>!
+                        the leaderboard. You must prove to everyone that you are now a wizard <span className="yellow">{wizardName}</span>!
                     </p>
                 </div>
             </div>
