@@ -425,7 +425,7 @@ app.get("/api/highscore", (req, res) => {
     let leaderboard = [];
     let users = models.Users.findAll({
         raw: true,
-        limit: 100,
+        limit: 99,
         group: ["high_score", "Users.id"],
         order: [[sequelize.fn("max", sequelize.col("high_score")), "DESC"]]
         //  [['score', 'Desc']]

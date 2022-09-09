@@ -22,7 +22,7 @@ function Leaderboard(props) {
         return (
             <tr key={index}>
                 <td className="left-column"><Image className="prize" src="/icons/trophy.png" alt="leaderboard icon" width={30} height={35} /></td>
-                <td className="middle-column">{score.username}</td>
+                <td className="middle-column">{index + 1}.&nbsp;{score.username}</td>
                 <td className="right-column" >{score.score}</td>
             </tr>
         )
@@ -30,7 +30,9 @@ function Leaderboard(props) {
     return (
         <div className='leaderboard-page '>
             <Background />
+                
                 <ScoreCard />
+                <div className="wrap">
                 <div className='flex'>
                     <div className='table-title w-50 ma-auto'>Wizard</div>
                     <div className='table-title w-50 ma-auto'>High Score</div>
@@ -42,6 +44,7 @@ function Leaderboard(props) {
                         </tbody>
                     </table>
                 </div>
+            </div>
             <div className='ss'><div className='world'></div></div>
         </div>
     )

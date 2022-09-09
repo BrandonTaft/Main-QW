@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import PsychologyIcon from '@mui/icons-material/Psychology';
@@ -13,11 +14,24 @@ import SportsFootballIcon from '@mui/icons-material/SportsFootball';
 import LanguageIcon from '@mui/icons-material/Language';
 import BoltIcon from '@mui/icons-material/Bolt';
 function SelectionPage() {
+    const theme = createTheme({
+        breakpoints: {
+            values: {
+                xs: 0,
+                rs: 500,
+                sm: 600,
+                md: 900,
+                lg: 1200,
+                xl: 1536,
+            },
+        },
+    });
 
     return (
+        <ThemeProvider theme={theme}>
         <div className="container row column" >
             <Box className='m-auto'>
-                <Grid className="grid-container" container spacing={{ xs: 1, sm: 2.5, md: 3 }} columns={{ xs: 2, sm: 3 }}>
+                <Grid className="grid-container" container spacing={{ xs: 1, sm: 2.5, md: 3 }} columns={{ xs: 2, rs: 3 }}>
                     <Grid className='square' item xs={1} >
                         <Box className="grid-item">
                             <Link
@@ -207,13 +221,14 @@ function SelectionPage() {
                 <Image
                     className='wiz-img'
                     alt="wizard"
-                    src="/wiz8.png"
+                    src="/flying-wiz.png"
                     layout='fill'
                     objectFit='cover'
                     priority='true'
                 />
             </div>
         </div>
+        </ThemeProvider>
     )
 }
 

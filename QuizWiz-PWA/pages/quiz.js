@@ -67,6 +67,7 @@ function StartQuiz() {
   }
 
   function playquiz() {
+    document.getElementById('wizard').classList.add('remove')
     if (questioncounter === 10) {
       setquizfinished(true);
     } else {
@@ -151,15 +152,12 @@ function StartQuiz() {
   return (
 
     <div className="quiz-page">
-      <div className="background">
-        <Image className="rotate" src="/QuizWizGold.png" alt="wizard" width={200} height={220} />
-      </div>
       <div className="quiz-container">
         {quizfinished != true ? (
           <div className="question-container" id="question-container">
             <div className="question"> {currentquestion}</div>
             {correctanswer != null ? null : (
-              <button className="quiz-btn btn" onClick={() => playquiz()}><span className="btn-text">Start Quiz</span></button>
+              <button className="quiz-btn" onClick={() => playquiz()}><span>Start Quiz</span></button>
             )}
             {correctanswer != null ? (
               <ButtonGroup
@@ -179,21 +177,24 @@ function StartQuiz() {
           <div>
             {/* <Popup modal trigger={<Button id="sub-btn">Submit Quiz</Button>}>
               {" "} */}
-              <div className="done">
-                <h1>Good Job!</h1>
-                Your score was {finalscore}
-                Your previous high score is {highscore}
-              </div>
-              {/* {" "}
+            <div className="done">
+              <h1>Good Job!</h1>
+              Your score was {finalscore}
+              Your previous high score is {highscore}
+            </div>
+            {/* {" "}
             </Popup> */}
           </div>
         )}
-
+        <div id="wizard" className="quiz-wiz">
+          <div class="bubble bubble-bottom">
+            <p className="first-sentence">Lol, You look scared!!!</p>
+          </div>
+          <Image className="" src="/mean-wiz.png" alt="wizard" objectFit="scale-down" layout="fill" />
+        </div>
 
       </div>
-      {/* <div className="quiz-fill">
-          <Image src="/wiz1.png" alt="wizard" width={217} height={278} />
-      </div> */}
+
     </div>
   );
 }

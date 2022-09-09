@@ -20,11 +20,11 @@ function ScoreCard() {
 
     return (
         <div className="scorecard">
-            <p>Your Score</p>
-            <div className="dial">      
+            <p className='yellow'>Your High Score</p>
+            <p className="white high-score">      
                     {/* {myScore} */}
                     55555
-            </div>
+            </p>
         </div>
     )
 }

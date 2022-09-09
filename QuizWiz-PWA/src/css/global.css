@@ -30,18 +30,6 @@
   --bs-danger: #dc3545;
   --bs-light: #f8f9fa;
   --bs-dark: #121212;
-  --bs-primary-rgb: 244, 98, 58;
-  --bs-secondary-rgb: 108, 117, 125;
-  --bs-success-rgb: 25, 135, 84;
-  --bs-info-rgb: 13, 202, 240;
-  --bs-warning-rgb: 255, 193, 7;
-  --bs-danger-rgb: 220, 53, 69;
-  --bs-light-rgb: 248, 249, 250;
-  --bs-dark-rgb: 33, 37, 41;
-  --bs-white-rgb: 255, 255, 255;
-  --bs-black-rgb: 0, 0, 0;
-  --bs-body-color-rgb: 33, 37, 41;
-  --bs-body-bg-rgb: 255, 255, 255;
 }
 
 .purple {
@@ -54,6 +42,10 @@
 
 .grey {
   color: var(--bs-gray-500);
+}
+
+.white {
+  color: var(--bs-white);
 }
 
 h2,
@@ -92,6 +84,10 @@ h5 {
   width: 50%;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .btn {
   border-radius: 10px;
   font-size: 1em;
@@ -106,15 +102,6 @@ h5 {
   margin: 8px;
 }
 
-body {
-  margin: 0 !important;
-  height: 100%;
-  /* background: var(--bs-dark); */
-  background-color: #050610;
-  font-family: "Barlow", sans-serif;
-  font-weight: 400;
-}
-
 .layout {
   display: flex;
   flex-direction: column;
@@ -125,24 +112,37 @@ body {
   display: flex;
 }
 
-@media (min-width: 1000px) {
-  .container {
-    margin-top: 3em;
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    margin-top: 4em;
-  }
-}
-
 .row {
   flex-direction: row;
 }
 
 .column {
   flex-direction: column;
+}
+
+.remove {
+  display: none;
+}
+
+.rotate {
+  animation: rotation 15s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(359deg);
+  }
+}
+
+body {
+  margin: 0 !important;
+  height: 100%;
+  background-color: #050610;
+  font-family: "Barlow", sans-serif;
+  font-weight: 400;
 }
 
 /****************** LOGIN AND REGISTER *******************/
@@ -267,21 +267,15 @@ body {
   padding: 0 40px 30px;
   text-align: center;
   font-size: 1.5em;
-  color: red;
+  color: var(--bs-danger);
 }
 
 .message button {
   margin-top: 1.5em;
   background-color: var(--bs-gray-dark);
-  color: white;
-  /* padding-left: 1em;
-  padding-right: 1em; */
+  color: var(--bs-white);
   padding: .25em 1.5em;
   font-size: .75em;
-}
-
-.remove {
-  visibility: hidden;
 }
 
 @media (min-width: 400px) {
@@ -648,10 +642,6 @@ body {
 }
 
 @media (max-height: 500px) {
-  .iconBar {
-    margin-bottom: 1rem;
-  }
-
   .iconBar img {
     height: 80px !important;
     width: 80px !important;
@@ -740,7 +730,7 @@ body {
 
 @media (min-width: 768px) {
   .grid-item svg {
-    font-size: 2.25em;
+    font-size: 2em;
   }
 
   .fill {
@@ -748,7 +738,6 @@ body {
   }
 
   .container {
-    padding-bottom: 20px;
     margin-top: 20px;
   }
 }
@@ -821,37 +810,6 @@ body {
     font-size: 1.1rem;
     padding: 10px 0;
   }
-}
-
-/************* Scorecard ****************/
-.scorecard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 1.3em;
-  text-transform: uppercase;
-}
-
-.scorecard span {
-  color: var(--bs-yellow);
-}
-
-.scorecard p {
-  color: var(--bs-white);
-  margin: 0;
-  margin-bottom: 5px;
-}
-
-.dial {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 3em;
-  min-width: 3em;
-  color: var(--bs-white);
-  border-radius: 50%;
-  border: solid 3px var(--bs-yellow);
-  font-size: 1.4rem;
 }
 
 /*************PROFILE PAGE****************/
@@ -1111,8 +1069,32 @@ body {
 .welcome p {
   font-size: 2.25rem;
 }
-
 }
+
+/************* Scorecard ****************/
+.scorecard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  margin: auto;
+}
+
+.scorecard span {
+  color: var(--bs-yellow);
+}
+
+.scorecard p {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.high-score {
+  font-size: 1.5em;
+}
+
+
 /***********Leaderboard***********/
 .particle-bg {
   position: absolute;
@@ -1123,19 +1105,23 @@ body {
 .leaderboard-page {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.wrap {
+  margin: 0 auto auto auto;
 }
 
 .lead-container {
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 90vw;
-  flex-grow: 1;
+  max-height: 24em;
 }
 
 table {
   border-collapse: collapse;
-  font-size: 1.5em;
+  font-size: 1.75em;
   color: #ffffff;
   width: 100vw;
   table-layout: fixed;
@@ -1177,17 +1163,15 @@ td {
 .ss {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  justify-content: flex-end;
   z-index: 0;
-  margin: 0 auto;
+  margin: auto auto 0 auto;
 }
 
 .world {
   width: 20rem;
   height: 10rem;
   background-color: #050610;
-  background-image: url("/e.jpg");
+  background-image: url("/earth2.jpg");
   border-radius: 10rem 10rem 0 0;
   position: relative;
   animation-name: rotate;
@@ -1205,34 +1189,11 @@ td {
   }
 }
 
-@media (min-width: 360px) {
-  table {
-    font-size: 1.75em;
-  }
-}
-
-@media (min-width: 375px) {
-  .lead-container {
-    height: 100vw;
-  }
-
-  table {
-    font-size: 1.75em;
-  }
-}
-
 @media (min-width: 400px) {
-  .dial {
-    font-size: 1.5rem;
-  }
   .world {
     border-radius: 50%;
-    height: 100%;
-  }
-
-  .lead-container {
-    height: 350px;
-    flex-grow: 0;
+    height: 15rem;
+    width: 15rem;
   }
 
   .prize {
@@ -1241,62 +1202,29 @@ td {
 }
 
 @media (min-width: 500px) {
-  .world {
-    width: 20rem;
-    height: 10rem;
-    border-radius: 10rem 10rem 0 0;
-  }
-
-  .lead-container {
-    height: 40vh;
-  }
-
-  table {
-    font-size: 1.5em;
-  }
+ 
+  
 
   .left-column {
-    padding-left: 24px;
+    padding-left: 2rem;
   }
 
   .right-column {
-    padding-right: 32px;
+    padding-right: 2.5rem;
   }
 }
 
 @media (min-width: 600px) {
   .scorecard {
-    font-size: 1.5em;
+    font-size: 2em;
   }
-
-  .dial {
-    font-size: 1.75rem;
-  }
-
   .world {
-    border-radius: 50%;
     height: 20em;
     width: 20em;
   }
 
-  .lead-container {
-    height: 40vh;
-  }
-
   table {
-    font-size: 2.5em;
-  }
-
-  .left-column {
-    width: 70px;
-  }
-
-  .left-column img {
-    height: 60px !important;
-  }
-
-  .right-column {
-    padding-right: 32px;
+    font-size: 2.75em;
   }
 
   .prize {
@@ -1306,17 +1234,31 @@ td {
   .table-title {
     font-size: 2em;
   }
+
+  .left-column img {
+    height: 45px !important;
+    width: 40px !important;
+  }
+}
+
+@media (min-width: 800px) {
+  .scorecard {
+    font-size: 2.25em;
+    margin-bottom: 0;
+  }
+
+  .lead-container {
+    max-height: 35em;
+  }
+
+  .table-title {
+    font-size: 2.25em;
+  }
 }
 
 @media (min-width: 900px) {
-  .scorecard {
-    font-size: 2em;
-  }
-
-  .dial {
-    font-size: 2.25rem;
-    height: 3.5em;
-    width: 3.5em;
+  .lead-container {
+    max-height: 40em;
   }
 
   .world {
@@ -1325,7 +1267,7 @@ td {
   }
 
   table {
-    font-size: 2.75em;
+    font-size: 3.25em;
   }
 
   .middle-column {
@@ -1335,30 +1277,18 @@ td {
   .table-title {
     font-size: 2.5em;
   }
-}
 
-@media (min-width: 1200px) {
-  .scorecard {
-    font-size: 2em;
+  .left-column {
+    padding-left: 3rem;
+    padding-right: 1.5rem;
   }
 
-  .dial {
-    font-size: 2rem;
-    height: 3.5em;
-    width: 3.5em;
+  .right-column {
+    padding-right: 4rem;
   }
 
-  .world {
-    height: 25em;
-    width: 25em;
-  }
-
-  table {
-    font-size: 2em;
-  }
-
-  .table-title {
-    font-size: 2em;
+  .left-column img {
+    height: 55px !important;
   }
 }
 
@@ -1367,10 +1297,8 @@ td {
     font-size: 1.5em;
   }
 
-  .dial {
-    font-size: 1.5rem;
-    height: 3em;
-    width: 3em;
+  .lead-container {
+    max-height: 20em;
   }
 
   .table-title {
@@ -1378,8 +1306,8 @@ td {
   }
 
   table {
-    font-size: 1.5em;
-    width: 75vw;
+    font-size: 2em;
+    width: 85vw;
     margin: auto;
   }
 
@@ -1391,9 +1319,30 @@ td {
     top: 5px !important;
   }
 
-  /* .lead-container {
-    height: 100vw;
-  } */
+}
+
+@media (min-width: 1200px) {
+  .scorecard {
+    font-size: 2em;
+  }
+
+  .world {
+    height: 25em;
+    width: 25em;
+  }
+
+  table {
+    font-size: 2.5em;
+    width: 100vw;
+  }
+
+  .table-title {
+    font-size: 2.5em;
+  }
+
+  .lead-container {
+    max-height: 25em;
+  }
 }
 
 @media (max-height: 800px) {
@@ -1419,11 +1368,11 @@ td {
   }
 }
 
-@media (max-height: 500px) {
-  .lead-container {
-    height: 100vw;
+@media (max-height: 600px) {
+  .leaderboard-page {
+    overflow: visible;
   }
-  
+
   .ss {
     display: none;
   }
@@ -1462,12 +1411,12 @@ td {
 }
 
 .question-container {
-  flex-grow: 1;
   color: #c7c7c7;
   padding: 16px;
   display: flex;
   flex-direction: column;
   font-size: 1.5em;
+  margin-top: 1em;
 }
 
 .question {
@@ -1490,19 +1439,188 @@ td {
   color: #03dac6;
 }
 
-.quiz-fill {
+.quiz-wiz {
+  position: relative;
+  height: 20em;
+  margin: auto auto 2em;
+}
+
+.bubble {
+  position: relative;
+  background: rgb(255, 239, 224);
+  border-radius: 30px;
+  padding: 20px 15px 20px;
+  font-size: 1.5em;
+  font-weight: 600;
+  text-align: center;
+  width: fit-content;
+  bottom: 4em;
+  border: 3px solid black;
   margin: auto;
 }
 
-.rotate {
-  animation: rotation 15s infinite linear;
+.bubble-bottom:before {
+  content: "";
+  position: absolute;
+  border-left: 25px solid black;
+  border-right: 14px solid transparent;
+  border-top: 14px solid black;
+  border-bottom: 20px solid transparent;
+  bottom: -27px;
 }
 
-@keyframes rotation {
-  from {
-    transform: rotateY(0deg);
+.bubble-bottom:after {
+  content: "";
+  position: absolute;
+  border-left: 24px solid rgb(255, 239, 224);
+  border-right: 12px solid transparent;
+  border-top: 12px solid rgb(255, 239, 224);
+  border-bottom: 20px solid transparent;
+  top: 60px;
+}
+
+.bubble p {
+  background-color: beige;
+  color: var(--bs-dark);
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid black; /* The cursor */
+  white-space: nowrap; /* Important Keeps the content on a single line */
+  margin: 0 auto; /* scrolling effect as the typing happens */
+  letter-spacing: .05em;
+}
+
+.first-sentence {
+  animation: 
+    typing 8s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The bubble cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: black; }
+}
+
+@media (min-width: 360px) {
+  .quiz-wiz {
+    height: 25em;
   }
-  to {
-    transform: rotateY(359deg);
+}
+
+@media (min-width: 400px) {
+  .quiz-wiz {
+    height: 30em;
+    width: 100vw;
+  }
+
+  .bubble {
+    font-size: 1.75em;
+  }
+}
+
+@media (min-width: 500px) {
+  .quiz-wiz {
+    height: 25em;
+  }
+
+  .bubble {
+    bottom: 3em;
+    left: 40px;
+  }
+
+  .bubble-bottom:after {
+    top: 64px;
+  }
+}
+
+@media (min-width: 768px) {
+  .quiz-wiz {
+    height: 35em;
+  } 
+
+  .quiz-btn {
+    font-size: 1em;
+  }
+
+  .bubble {
+    font-size: 2.25em;
+    bottom: 3.25em;
+    left: 50px;
+    padding: 30px 25px 30px
+  }
+
+  .bubble-bottom:before {
+    bottom: -30px;
+  }
+  
+  .bubble-bottom:after {
+    top: 96px;
+  }
+}
+
+@media (min-width: 800px) {
+  .quiz-wiz {
+    margin: auto;
+  } 
+}
+
+@media (min-width: 900px) {
+  .quiz-wiz {
+    height: 45em;
+  } 
+
+  .bubble {
+    font-size: 2.5em;
+  }
+
+  .bubble-bottom:before {
+    border-left: 35px solid black;
+    border-right: 24px solid transparent;
+    border-top: 24px solid black;
+    border-bottom: 30px solid transparent;
+    bottom: -48px;
+  }
+  
+  .bubble-bottom:after {
+    border-left: 34px solid rgb(255, 239, 224);
+    border-right: 22px solid transparent;
+    border-top: 22px solid rgb(255, 239, 224);
+    border-bottom: 30px solid transparent;
+    top: 100px;
+  }
+  
+}
+
+@media (orientation: landscape) {
+  .quiz-wiz {
+   height: 20em;
+  }
+
+  .bubble {
+    visibility: hidden;
+  }
+}
+
+@media (min-width: 1200px) {
+  .quiz-wiz {
+    height: 25em;
+    margin:auto auto 5px;
+  }
+
+  .bubble {
+    visibility: visible;
+  }
+}
+
+@media (min-width: 1300px) {
+  .quiz-wiz {
+    height: 35em;
+    margin:auto auto 5px;
   }
 }

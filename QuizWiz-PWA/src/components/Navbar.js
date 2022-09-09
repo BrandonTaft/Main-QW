@@ -36,14 +36,14 @@ function Navbar() {
             </Link>
             <Link href="/leaderboard">
                 <a>
-                    <Image className="trophy" src="/icons/trophy1.png" alt="leaderboard icon" width={120} height={120} quality={100} />
+                    <Image className="trophy" src="/icons/trophy.png" alt="leaderboard icon" width={120} height={120} quality={100} />
                 </a>
             </Link>
-            <span onClick={logOut} >
+            <span className="pointer" onClick={logOut} >
                 <Image src="/icons/exit.png" alt="logout icon" width={120} height={120} quality={100} />
             </span>
             <Link href="/profile">
-                <Avatar className="avatar" sx={{ bgcolor: '#33236c', color: '#ceb728' }} {...stringAvatar(name.toUpperCase())} />
+                <Avatar className="avatar pointer" sx={{ bgcolor: '#33236c', color: '#ceb728' }} {...stringAvatar(name.toUpperCase())} />
             </Link>
         </Box>
     )
