@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Image from 'next/image';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
-import Popup from "reactjs-popup";
 import { useRouter } from 'next/router';
 
 
@@ -58,16 +57,18 @@ function StartQuiz() {
       body: JSON.stringify({ "userName": wizardName, "score": finaltempscore }),
       redirect: 'follow'
     };
-
-    // fetch("https://damp-spire-28696.herokuapp.com/api/submit", requestOptions)
-    fetch("http://127.0.0.1:8080/api/submit", requestOptions)
+    console.log("test before")
+    fetch("https://damp-spire-28696.herokuapp.com/api/submit", requestOptions)
+    // fetch("http://127.0.0.1:8080/api/submit", requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
+      console.log("test after")
   }
 
   function playquiz() {
     document.getElementById('wizard').classList.add('remove')
+    document.getElementById('question').classList.add('minimum')
     if (questioncounter === 10) {
       setquizfinished(true);
     } else {
@@ -155,9 +156,9 @@ function StartQuiz() {
       <div className="quiz-container">
         {quizfinished != true ? (
           <div className="question-container" id="question-container">
-            <div className="question"> {currentquestion}</div>
+            <div id="question" className="question"> {currentquestion}</div>
             {correctanswer != null ? null : (
-              <button className="quiz-btn" onClick={() => playquiz()}><span>Start Quiz</span></button>
+              <button className="btn quiz-btn" onClick={() => playquiz()}><span>Start Quiz</span></button>
             )}
             {correctanswer != null ? (
               <ButtonGroup
@@ -166,29 +167,28 @@ function StartQuiz() {
                 aria-label="button group"
                 variant="text"
               >
-                <Button onClick={() => checkAnswer(0)} id="q-btn">{answers[0]}</Button>
-                <Button onClick={() => checkAnswer(1)} id="q-btn">{answers[1]}</Button>
-                <Button onClick={() => checkAnswer(2)} id="q-btn">{answers[2]}</Button>
-                <Button onClick={() => checkAnswer(3)} id="q-btn">{answers[3]}</Button>
+                <Button onClick={() => checkAnswer(0)} className="q-btn">{answers[0]}</Button>
+                <Button onClick={() => checkAnswer(1)} className="q-btn">{answers[1]}</Button>
+                <Button onClick={() => checkAnswer(2)} className="q-btn">{answers[2]}</Button>
+                <Button onClick={() => checkAnswer(3)} className="q-btn">{answers[3]}</Button>
               </ButtonGroup>
             ) : null}
           </div>
         ) : (
           <div>
-            {/* <Popup modal trigger={<Button id="sub-btn">Submit Quiz</Button>}>
-              {" "} */}
+           
             <div className="done">
               <h1>Good Job!</h1>
               Your score was {finalscore}
               Your previous high score is {highscore}
+              <a className="quiz-btn" href="/home">Go Back Home</a>
             </div>
-            {/* {" "}
-            </Popup> */}
+          
           </div>
         )}
         <div id="wizard" className="quiz-wiz">
-          <div class="bubble bubble-bottom">
-            <p className="first-sentence">Lol, You look scared!!!</p>
+          <div className="bubble bubble-bottom">
+            <p>Lol, You look scared!!!</p>
           </div>
           <Image className="" src="/mean-wiz.png" alt="wizard" objectFit="scale-down" layout="fill" />
         </div>
