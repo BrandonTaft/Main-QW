@@ -461,7 +461,6 @@ app.get("/api/userscore", async (req, res) => {
 //***************************Get questions***************************//
 
 app.get("/quiz/:category", (req, res) => {
-    console.log(req.params)
     let category = req.params["category"];
     if (category == 100) {
         axios
@@ -502,10 +501,10 @@ app.post("/api/deleteuser", async (req, res) => {
 //**************************Submit Score**************************//
 
 app.post("/api/submit", async (req, res) => {
-    console.log(req.user.username);
+    console.log("req",req.body.username);
     let user = await models.Users.findOne({
         where: {
-            name: req.user.username
+            name: req.body.username
         }
     });
 
