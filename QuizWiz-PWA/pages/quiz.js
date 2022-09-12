@@ -9,7 +9,6 @@ function StartQuiz() {
   const router = useRouter()
   const { cat } = router.query
   const [currentQuestion, setCurrentQuestion] = useState("");
-  const [questionCounter, setQuestionCounter] = useState(0);
   const [questions, setQuestions] = useState([]);
   const [correctAnswer, setCorrectAnswer] = useState(null);
   const [answers, setAnswers] = useState([]);
@@ -18,6 +17,7 @@ function StartQuiz() {
   const [finalScore, setFinalScore] = useState(0);
   const [highScore, setHighScore] = useState("");
   const [wizardName, setWizardName] = useState("");
+  let [questionCounter, setQuestionCounter] = useState(0);
   let currentAnswers = [];
 
   // Get questions on first render
@@ -38,7 +38,8 @@ function StartQuiz() {
       .catch(error => console.log("error", error));
   }
 
-  function playquiz() {
+  async function playquiz() {
+    console.log("counter", questionCounter)
     // Fired from on click and removes the wizard image from page
     document.getElementById('wizard').classList.add('remove')
     document.getElementById('question').classList.add('minimum')
@@ -110,11 +111,11 @@ function StartQuiz() {
   }
   // If specified answer is the correctAnswer, add 1 to currentScore
   // Then adds one to questionCounter and then fires playQuiz function
-  function checkAnswer(i) {
+  async function checkAnswer(i) {
     if (answers[i] === correctAnswer) {
       setCurrentScore(currentScore + 1);
     }
-    setQuestionCounter(questionCounter + 1);
+    setQuestionCounter((questionCounter += 1));
     playquiz();
   }
   // Calculates final score and puts it in finalScore state
@@ -186,19 +187,19 @@ function StartQuiz() {
           </div>
         )}
         {highScore === "true" ?
-          <div id="wizard" className="quiz-wiz">
+          <div id="wizard" className="quiz-wiz finish">
             <div className="bubble bubble-bottom">
               <p>That's a New High Score!</p>
             </div>
-            <Image className="" src="/mean-wiz.png" alt="wizard" objectFit="contain" layout="fill" priority />
+            <Image src="/images/mean-wiz.png" alt="wizard" objectFit="contain" layout="fill" priority />
           </div>
           :
           (highScore === "false" ?
-            <div id="wizard" className="quiz-wiz">
+            <div id="wizard" className="quiz-wiz finish">
               <div className="bubble bubble-bottom">
                 <p>You Can Do Better :&#40;</p>
               </div>
-              <Image className="" src="/mean-wiz.png" alt="wizard" objectFit="contain" layout="fill" priority />
+              <Image src="/images/mean-wiz.png" alt="wizard" objectFit="contain" layout="fill" priority />
             </div>
             : null
           )}
@@ -206,7 +207,7 @@ function StartQuiz() {
           <div className="bubble bubble-bottom">
             <p>Lol, You look scared!!!</p>
           </div>
-          <Image className="" src="/mean-wiz.png" alt="wizard" objectFit="scale-down" layout="fill" priority />
+          <Image src="/images/mean-wiz.png" alt="wizard" objectFit="contain" layout="fill" priority />
         </div>
 
       </div>

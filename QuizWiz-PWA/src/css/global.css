@@ -1171,7 +1171,7 @@ td {
   width: 20rem;
   height: 10rem;
   background-color: #050610;
-  background-image: url("/earth2.jpg");
+  background-image: url("/images/earth2.jpg");
   border-radius: 10rem 10rem 0 0;
   position: relative;
   animation-name: rotate;
@@ -1423,13 +1423,12 @@ td {
 }
 
 .minimum {
-  min-height: 5em;
-  width: 90%;
+  min-height: 6em;
   margin: auto;
 }
 
 .button-group {
-  margin: 2em auto 0;
+  margin: 1em auto 0;
   border-top: 1px solid #1976D2;
   border-bottom: 1px solid #1976D2;
   width: 85%;
@@ -1443,8 +1442,12 @@ td {
 
 .quiz-wiz {
   position: relative;
-  height: 20em;
-  margin: auto auto 2em;
+  height: 17em;
+  margin: auto auto 6em;
+}
+
+.quiz-wiz.finish {
+  margin-bottom: 3em;
 }
 
 .bubble {
@@ -1456,7 +1459,7 @@ td {
   font-weight: 600;
   text-align: center;
   width: fit-content;
-  bottom: 3.5em;
+  bottom: 4em;
   border: 4px solid var(--bs-yellow);
   margin: auto;
 }
@@ -1527,7 +1530,7 @@ td {
   background-color: var(--bs-purple);
   color: var(--bs-yellow);
   text-decoration: none;
-  padding: 7px 15px 10px;
+  padding: 5px 15px 8px;
   border-radius: 10px;
   font-weight: 500;
 }
@@ -1551,19 +1554,68 @@ td {
 
 @media (min-width: 360px) {
   .question-container {
-    margin: auto;
+    margin-top: 1.5em;
+  }
+
+  .minimum {
+    max-height: 7em;
+  }
+
+  .button-group {
+    margin-top: 2em;
   }
 
   .quiz-wiz {
-    height: 22em;
-    margin: auto 1em 4em;
+    height: 25em;
+    margin: auto 2em 3em;
   }
 
   .bubble {
-    font-size: 1.45em;
-    bottom: 3.25em;
+    bottom: 2.5em;
+    font-size: 1.5em;
+  }
+
+  .done {
+    margin-top: 0em;
+  }
+
+  .done h1 {
+    font-size: 2.25em;
+  }
+
+  .done h2 {
+    font-size: 1.75em;
+    margin: 0em 0em 0.5em;
+  }
+
+  .final-btn {
+    font-size: 1.25em;
+  }
+
+}
+
+@media (min-width: 375px) {
+  .quiz-wiz {
+    margin: auto 2em 6em;
+  }
+
+  .bubble {
+    bottom: 3em;
+  }
+
+  .done {
+    margin-top: .5em;
+  }
+
+  .done h1 {
+    font-size: 2.5em;
+  }
+
+  .done h2 {
+    font-size: 2em;
   }
 }
+
 
 
 @media (min-width: 400px) {
@@ -1572,12 +1624,13 @@ td {
   }
 
   .quiz-wiz {
-    height: 30em;
+    height: 35em;
+    margin: auto 2em 3em;
   }
 
   .bubble {
+    bottom: 1em;
     font-size: 1.75em;
-    bottom: 2.75em;
   }
   
   .q-btn {
@@ -1588,34 +1641,29 @@ td {
     width: 100%;
   }
 
+  .quiz-wiz.finish {
+    margin-bottom: 0em;
+  }
+
   .done h1 {
-    font-size: 2em;
+    font-size: 2.75em;
   }
 
-  .done h2 {
-    margin: 1em 0em 1.5em;
-    font-size: 1.75em;
-  }
-
-  .final-btn {
-    font-size: 1.25em;
-  }
 }
 
 @media (min-width: 500px) {
   .quiz-wiz {
-    height: 30em;
-    margin: auto auto 1em;
+    height: 20em;
+    margin: auto auto 5em;
   }
 
   .bubble {
-    font-size: 1.35em;
-    bottom: 1em;
+    bottom: 3em;
   }
 
   .minimum {
     min-height: 5em;
-    width: 90%;
+    width: 80%;
   }
 
   .question-container {
@@ -1637,13 +1685,17 @@ td {
   }
 
   .quiz-wiz {
-    margin: auto auto 5em;
+    height: 30em;
   } 
 
   .bubble {
-    font-size: 2em;
+    font-size: 2.5em;
     bottom: 3.25em;
-    padding: 25px
+    padding: 30px 25px 30px
+  }
+
+  .bubble-bottom:after {
+    right: 29%;
   }
 
   .minimum {
@@ -1654,35 +1706,56 @@ td {
     font-size: 2.25em;
   }
 
+  .button-group {
+    margin-top: 3em;
+  }
+
   .q-btn {
     font-size: 1.75rem !important;
   }
 
-  .done h1 {
-    font-size: 3em;
-    margin-top: .5em;
+  .done {
+    margin-top: 0em;
   }
 
+  .done h1 {
+    font-size: 4em;
+  }
+ 
   .done h2 {
-    margin: .5em 0em 1em;
-    font-size: 2.5em;
+    font-size: 3em;
+    margin: 0em 0em 0.5em;
   }
 
   .final-btn {
-    font-size: 1.75em;
+    font-size: 2.25em;
+  }
+
+  .quiz-wiz.finish {
+    margin-bottom: 1em;
   }
 }
 
 @media (min-width: 800px) {
+  .done {
+    margin-top: 1em;
+  }
+
   .quiz-wiz {
     height: 35em;
-    margin: auto auto 8em;
+    margin: auto auto 10em;
   } 
 
-  .bubble {
-    font-size: 2.25em;
-    bottom: 3em;
-    padding: 25px
+  .quiz-wiz.finish {
+    margin-bottom: 3em;
+  }
+
+  .question-container {
+    font-size: 2.5em;
+  }
+
+  .q-btn {
+    font-size: 2rem !important;
   }
 }
 
@@ -1692,7 +1765,8 @@ td {
   }
 
   .bubble {
-    bottom: 2.75em;
+    font-size: 3em;
+    bottom: 3em;
   }
 
   .bubble-bottom:before {
@@ -1714,11 +1788,12 @@ td {
   }
 
   .question-container {
+    margin-top: 2em;
     font-size: 2.75em;
   }
 
   .minimum {
-    width: 75%;
+   min-height: 5em;
   }
 
   .button-group {
@@ -1726,32 +1801,40 @@ td {
   }
 
   .q-btn {
-    font-size: 2rem !important;
+    font-size: 2.25rem !important;
   }
   
   .done h1 {
-    font-size: 4em;
-    margin-top: 1em;
+    font-size: 5em;
   }
 
   .done h2 {
-    margin: .5em 0em 1em;
-    font-size: 3em;
+    font-size: 3.5em;
+    margin: .25em;
+    margin-bottom: .75em;
   }
 
   .final-btn {
-    font-size: 2em;
+    font-size: 2.75em;
   }
 }
 
 @media (orientation: landscape) {
+  .question-container {
+    margin-top: 0;
+  }
+
   .quiz-btn {
-    font-size: .85em;
+    font-size: 1em;
   }
 
   .quiz-wiz {
-   height: 25em;
+   height: 20em;
    margin-bottom: 1em;
+  }
+
+  .quiz-wiz.finish {
+    margin-bottom: 1em;
   }
 
   .bubble {
@@ -1784,6 +1867,7 @@ td {
   }
 
   .question-container {
+    margin-top: 2em;
     font-size: 2em;
   }
 
@@ -1795,14 +1879,18 @@ td {
     font-size: 1.5rem !important;
   }
 
+  .done {
+    margin-top: 0;
+  }
+
   .done h1 {
     font-size: 3em;
     margin-top: 0;
   }
 
   .done h2 {
-    margin: .5em 0em 1em;
-    font-size: 2em;
+    margin: 0em 0em .5em;
+    font-size: 2.25em;
   }
 
   .final-btn {
@@ -1819,7 +1907,7 @@ td {
   }
 
   .question-container {
-    margin: auto;
+    margin-top: 0;
     font-size: 1.75em;
   }
 
@@ -1828,8 +1916,7 @@ td {
   }
 
   .button-group {
-    width: 70%;
-    margin: 0 auto;
+    margin: 1em auto 2em;
   }
 
   .q-btn {
@@ -1840,7 +1927,7 @@ td {
 
 @media (min-width: 1200px) {
   .quiz-wiz {
-    height: 25em;
+    height: 20em;
     margin:auto auto 5px;
   }
 
@@ -1868,10 +1955,18 @@ td {
 }
 
 @media (min-width: 1300px) and (min-height:900px) {
+  .question-container {
+    margin-top: 0;
+  }
+
+  .quiz-btn {
+    font-size: 1.5em;
+  }
+
   .quiz-wiz {
-    height: 30em;
+    height: 25em;
     margin:auto;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
   }
 
   .bubble {
@@ -1880,7 +1975,8 @@ td {
   }
 
   .question-container {
-    font-size: 2.75em;
+    margin-top: 1em;
+    font-size: 2.5em;
   }
 
   .minimum {
@@ -1889,20 +1985,19 @@ td {
 
   .button-group {
     width: 70%;
-    margin: 0 auto;
+    margin: 1em auto;
   }
 
   .q-btn {
-    font-size: 2rem !important;
+    font-size: 1.75rem !important;
   }
 
   .done h1 {
-    font-size: 3em;
+    font-size: 4em;
     margin-top: .25em;
   }
 
   .done h2 {
-    margin: .5em 0em 1em;
     font-size: 2.5em;
   }
 
@@ -1911,6 +2006,27 @@ td {
   }
 
 }
+
+@media (min-width: 1300px) and (min-height:1000px) {
+  .done h1 {
+    font-size: 5em;
+    margin-top: .25em;
+  }
+
+  .done h2 {
+    font-size: 3.5em;
+  }
+
+  .final-btn {
+    font-size: 2.25em;
+  }
+
+  .quiz-wiz.finish {
+    margin-bottom: 3em;
+  }
+
+}
+
 
 @media (min-width: 1500px) and (max-height:799px) {
   .bubble {

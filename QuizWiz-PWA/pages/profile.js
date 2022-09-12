@@ -38,7 +38,7 @@ function Profile(props) {
             </div>
             <a className="btn profile-btn" href="/home">Ready</a>
             <div className="my-score" >
-                <Image className='rotate' src="/qw-gold.png" alt="logo" layout='fill' />
+                <Image className='rotate' src="/images/qw-gold.png" alt="logo" layout='fill' />
             </div>
         </div>
     )

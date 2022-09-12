@@ -221,7 +221,7 @@ function SelectionPage() {
                 <Image
                     className='wiz-img'
                     alt="wizard"
-                    src="/flying-wiz.png"
+                    src="/images/flying-wiz.png"
                     layout='fill'
                     objectFit='cover'
                     priority='true'
